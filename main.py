@@ -1,6 +1,12 @@
 import telebot
+import os
 
-bot = telebot.TeleBot("BOT_TOKEN")
+TOKEN = os.getenv("BOT_TOKEN")
+
+if not TOKEN:
+    print("Ошибка проверки токена бота")
+
+bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -19,3 +25,4 @@ def skills(message):
 
 
 bot.infinity_polling()
+
